@@ -118,6 +118,7 @@ async function loadFile() {
     let JSONFile = JSON.parse(fileContent);
     console.log(JSONFile);
     getId('viewBox').innerHTML = `
+    ===표시 시작===
     시도 횟수 (브라우저 기준): ${JSONFile.try}<br>
     총점수: ${JSONFile.totalScore}<br>
     전하고 싶은 말: ${JSONFile.question6}<br>
