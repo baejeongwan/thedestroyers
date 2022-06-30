@@ -49,6 +49,23 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="postViewModal" tabindex="-1" aria-labelledby="postViewModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="postViewModalLabel">글 보기</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe style="width: 100%; height: 100%;" id="postViewModalIframe"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Navbar-->
         <nav class="navbar bg-light">
             <div class="container-fluid">
@@ -68,7 +85,37 @@
                 </div>
                 <p id="dayAfterMade">파괴자 모둠 설립일: 2022년 6월 30일</p>
                 <h3>파괴자 모둠의 기록</h3>
-                <p>아직 기록이 없습니다.</p>
+                <div class="row g-5">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">규칙 안내</h5>
+                                <p class="card-text">파괴자 모둠의 규칙을 안내합니다.</p>
+                                <a onclick="viewPost(1)" class="btn btn-primary">보기 &raquo;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <!--<img src="..." class="card-img-top" alt="...">-->
+                            <div class="card-body">
+                                <h5 class="card-title">내용 없음</h5>
+                                <p class="card-text">기록이 없습니다.</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <!--<img src="..." class="card-img-top" alt="...">-->
+                            <div class="card-body">
+                                <h5 class="card-title">내용 없음</h5>
+                                <p class="card-text">기록이 없습니다.</p>
+                                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <h3>파괴자 모둠의 일원이 되기</h3>
                 <p>결과파일은 <a href="mailto:jwan100@naver.com">여기로</a> 보내주세요.</p>
                 <div style="display: flex; justify-content: center;">

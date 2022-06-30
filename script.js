@@ -1,5 +1,6 @@
 const resultModal = new bootstrap.Modal(getId('resultModal'));
 const rulesModal = new bootstrap.Modal(getId('rulesModal'));
+const postViewModal = new bootstrap.Modal(getId('postViewModal'));
 let record;
 
 init()
@@ -155,4 +156,12 @@ async function loadFile() {
 function readResult() {
     getId('mainPage').classList.add('d-none');
     getId('viewPage').classList.remove('d-none');
+}
+
+function viewPost(num) {
+    if (num == 1) {
+        getId('postViewModalLabel').innerText = "규칙";
+        getId('postViewModalIframe').src = "./rules.pdf"
+        postViewModal.show();
+    }
 }
