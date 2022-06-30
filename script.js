@@ -2,6 +2,26 @@ const resultModal = new bootstrap.Modal(getId('resultModal'));
 const rulesModal = new bootstrap.Modal(getId('rulesModal'));
 let record;
 
+init()
+
+function init() {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let day = now.getDate();
+
+    let stDate = new Date(2022, 06, 30);
+    let endDate = new Date(year, month, day);
+    let btMs = endDate.getTime() - stDate.getTime();
+    let btDay = btMs / (1000*60*60*24);
+    getId('dayAfterMade').innerText = "파괴자 모둠 설립후 " + btDay + "일 지남."
+    //파괴자의 날 계산
+    if (btDay % 100 == 0) {
+        getId('destroyerDayNotice').classList.remove('d-none');
+        getId('destroyerDayNotice').classList.add('show');
+    }
+}
+
 getId('resultModal').addEventListener('hide.bs.modal', event => {
     getId('mainPage').classList.remove('d-none');
     getId('examPage').classList.add('d-none');

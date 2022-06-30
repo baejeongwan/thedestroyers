@@ -49,15 +49,28 @@
                 </div>
             </div>
         </div>
+        <!-- Navbar-->
         <nav class="navbar bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/thedestroyers">파괴자 모둠 면접</a>
+                <a class="navbar-brand" href="/thedestroyers">파괴자 모둠</a>
             </div>
         </nav>
         <div class="container">
             <div id="mainPage">
-                <h1 class="text-center">파괴자 모둠 면접에 오신 여러분을 환영합니다.</h1>
-                <p class="text-center">파괴자 모둠 면접을 통하여 파괴자 모둠의 일원이 되실수 있습니다. <br><br>지금 이 면접을 통하여 파괴자 모둠의 일원이 되세요!</p>
+                <noscript>
+                    <div class="alert alert-warning show" role="alert">
+                        현재 사용중인 브라우저는 자바스크립트가 비활성화되어 있습니다. 자바스크립트를 활성화해 주세요.
+                    </div>
+                </noscript>                  
+                <h1>파괴자 모둠</h1>
+                <div class="alert alert-primary d-none" id="destroyerDayNotice" role="alert" style="width: 200px">
+                    오늘은 파괴자의 날!
+                </div>
+                <p id="dayAfterMade">파괴자 모둠 설립일: 2022년 6월 30일</p>
+                <h3>파괴자 모둠의 기록</h3>
+                <p>아직 기록이 없습니다.</p>
+                <h3>파괴자 모둠의 일원이 되기</h3>
+                <p>결과파일은 <a href="mailto:jwan100@naver.com">여기로</a> 보내주세요.</p>
                 <div style="display: flex; justify-content: center;">
                     <button class="btn btn-primary" style="width: 250px; margin-right: 20px;" onclick="getStarted()">(참가자) 면접 보기 &raquo;</button>
                     <button class="btn btn-primary" style="width: 250px;" onclick="readResult()">(면접관) 면접 결과 읽기 &raquo;</button>
