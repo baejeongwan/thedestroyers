@@ -5,7 +5,8 @@
 [접속](https://baejeongwan.github.io/thedestroyers/)
 
 ## 할 수 있는일
-- [ ] 최신 안내문 보기
+- [X] 최신 안내문 보기
+- [X] 소개 & 팀원 목록 읽기
 - [X] 참가 면접보기
 
 ## 라이선스
