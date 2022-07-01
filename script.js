@@ -1,11 +1,14 @@
 const resultModal = new bootstrap.Modal(getId('resultModal'));
 const rulesModal = new bootstrap.Modal(getId('rulesModal'));
 const postViewModal = new bootstrap.Modal(getId('postViewModal'));
+const newsListModal = new bootstrap.Modal(getId('newsListModal'));
 let record;
+let newsList;
 
 init()
 
 function init() {
+    //파괴자의 날 표시
     let now = new Date();
     let year = now.getFullYear();
     let month = now.getMonth() + 1;
@@ -14,13 +17,47 @@ function init() {
     let stDate = new Date(2022, 06, 30);
     let endDate = new Date(year, month, day);
     let btMs = endDate.getTime() - stDate.getTime();
-    let btDay = btMs / (1000*60*60*24);
+    let btDay = Math.abs(btMs / (1000*60*60*24))
+    console.log(btDay)
     getId('dayAfterMade').innerText = "파괴자 모둠 설립후 " + btDay + "일 지남."
     //파괴자의 날 계산
     if (btDay % 100 == 0) {
         getId('destroyerDayNotice').classList.remove('d-none');
         getId('destroyerDayNotice').classList.add('show');
     }
+
+    //뉴스 로드
+
+    //파일 읽기
+    fetch('./newslist.json')
+    .then(response => {
+        return response.json();
+    })
+    .then(jsondata => {
+        newsList = jsondata;
+        newsLoadComplete();
+    });
+}
+
+function newsLoadComplete() {
+
+    //파일 출력
+    if (newsList.length > 0) {
+        loadNewsOnCard(0);
+        if (newsList.length > 1) {
+            loadNewsOnCard(1);
+            if (newsList.length > 2) {
+                loadNewsOnCard(2);
+            }
+        }
+    }
+}
+
+function loadNewsOnCard(num) {
+    getId('card-title-' + num).innerText = newsList[num].newsTitle;
+    getId('card-text-' + num).innerText = newsList[num].description;
+    getId('card-date-' + num).innerText = newsList[num].date;
+    getId('viewbutton-' + num).classList.remove('d-none');
 }
 
 getId('resultModal').addEventListener('hide.bs.modal', event => {
@@ -159,9 +196,21 @@ function readResult() {
 }
 
 function viewPost(num) {
-    if (num == 1) {
-        getId('postViewModalLabel').innerText = "규칙";
-        getId('postViewModalIframe').src = "./rules.pdf"
-        postViewModal.show();
-    }
+    getId('postViewModalLabel').innerText = newsList[num].newsTitle;
+    getId('postViewModalIframe').src = newsList[num].newsFile;
+    postViewModal.show();
+}
+
+function loadNewsList() {
+    getId('newsListGroup').innerHTML = ""
+    newsList.forEach((element, index, array) => {
+        getId('newsListGroup').innerHTML += `
+        <a class="list-group-item list-group-item-action" onclick="launchPostFromList(${index})">${element.newsTitle}</a>`
+    });
+    newsListModal.show()
+}
+
+function launchPostFromList(num) {
+    newsListModal.hide()
+    viewPost(num)
 }

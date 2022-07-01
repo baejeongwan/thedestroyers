@@ -1,0 +1,14 @@
+[
+    {
+        "newsTitle": "규칙",
+        "newsFile": "./news/rules.pdf",
+        "description": "파괴자 모둠의 규칙을 안내합니다.",
+        "date": "2022년 6월 30일"
+    },
+    {
+        "newsTitle": "채팅+ 는 어떻게 확인하나요?",
+        "newsFile": "./news/chat+.pdf",
+        "description": "채팅+ 확인법을 알려드립니다.",
+        "date": "2022년 7월 1일"
+    }
+]
