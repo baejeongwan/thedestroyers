@@ -214,3 +214,4 @@ function launchPostFromList(num) {
     newsListModal.hide()
     viewPost(num)
 }
+//Fix
