@@ -5,6 +5,7 @@ let newsList;
 
 init()
 
+
 function init() {
     //파괴자의 날 표시
     let now = new Date();
