@@ -1,5 +1,6 @@
 const resultModal = new bootstrap.Modal(getId('resultModal'));
 const rulesModal = new bootstrap.Modal(getId('rulesModal'));
+const toolTip = new bootstrap.Tooltip(getId('downloadBtn'));
 let record;
 
 function submitExam() {
@@ -65,8 +66,8 @@ function submitExam() {
         getId('resultText').classList.add('text-success');
         getId('resultText').innerText = "통과했습니다! (" + score + " 점)";
         getId('suggestText').innerText = "이 파일을 제출하십시오!";
-        getId('download').innerHTML = `
-        <button class="btn btn-primary btn-lg" onclick="downloadResult()">다운로드</button>`
+        getId('download').classList.remove('d-none')
+        
     } else {
         //Fail
         getId('resultText').classList.forEach(function (value, index, array) {
@@ -96,7 +97,7 @@ function downloadResult() {
     let downloadBlob = new Blob([JSON.stringify(record)], {type: 'application/json'})
     let downloadTag = document.createElement('a');
     downloadTag.href = URL.createObjectURL(downloadBlob);
-    downloadTag.download = "true";
+    downloadTag.download = "면접결과";
     downloadTag.click();
     downloadTag.remove();
 }

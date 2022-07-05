@@ -20,7 +20,9 @@
                         <h3>당신은 파괴자 모둠 면접에...</h3>
                         <h1 id="resultText"></h1>
                         <p id="suggestText"></p>
-                        <div id="download"></div>
+                        <div id="download" class="d-none">
+                            <button class="btn btn-primary btn-lg" onclick="downloadResult()" data-bs-toggle="tooltip" title="다운로드하려면 클릭" id="downloadBtn">다운로드</button>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear()">처음으로</button>
