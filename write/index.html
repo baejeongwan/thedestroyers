@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>파괴자 모듐 뉴스 생성기</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.18.9/jodit.min.css">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    </head>
+    <body>
+        <style>
+            .newsPost {
+                width: 100%;
+                height: 80vh;
+            }
+        </style>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3"> 
+            <div class="toast align-items-center" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        파일이 완성본.htm으로 다운로드 폴더에 저장되었습니다.
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+       
+        <div class="container">
+            <h1>뉴스 생성기</h1>
+            <h3>이 페이지는 HTML 포맷을 WYSIWYG 편집기로 쉽게 편집하는 기능을 제공합니다.<br>완성된 뉴스는 관리진한테 보내야 적용됩니다.</h3>
+            <textarea class="newsPost" id="editor"></textarea>
+            <button class="btn btn-primary btn-lg mt-5" onclick="downloadAsHtml()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                </svg>
+                지금 완성본 다운로드!
+            </button>
+        </div>
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jodit/3.18.9/jodit.min.js"></script>
+        <script>
+            const editor = Jodit.make('#editor');
+            const toast = new bootstrap.Toast(document.getElementById('liveToast'))
+
+            function downloadAsHtml() {
+                let value = editor.value;
+                let downloadBlob = new Blob([value], {type: 'text/html'});
+                let downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(downloadBlob);
+                downloadLink.download = "완성본";
+                downloadLink.click();
+                downloadLink.remove();
+                toast.show();
+            }
+
+            
+        </script>
+    </body>
+</html>
